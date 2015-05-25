@@ -28,6 +28,48 @@ void cmdI(vector<string> &vector, const string line)
 } // cmdI
 
 
+void cmdR(vector<string> &vector, const string line)
+{
+    printVector(vector);
+    cout << line << endl;
+} // cmdR
+
+
+void cmdF(vector<string> &vector, const string line)
+{
+    printVector(vector);
+    cout << line << endl;
+} // cmdF
+
+
+void cmdD(vector<string> &vector, const string line)
+{
+    printVector(vector);
+    cout << line << endl;
+} // cmdD
+
+
+void cmdE(vector<string> &vector, const string line)
+{
+    printVector(vector);
+    cout << line << endl;
+} // cmdE
+
+
+void cmdC(vector<string> &vector, const string line)
+{
+    printVector(vector);
+    cout << line << endl;
+} // cmdC
+
+
+void cmdM(vector<string> &vector, const string line)
+{
+    printVector(vector);
+    cout << line << endl;
+} // cmdM
+
+
 vector<string> editFile(const vector<string> &src, const vector<string> &cmd)
 {
     vector<string> destination = src;
@@ -43,22 +85,22 @@ vector<string> editFile(const vector<string> &src, const vector<string> &cmd)
             cmdI(destination, line);
         
         if (!command.compare("R"))
-            cout << "I found an R" << endl;
+            cmdR(destination, line);
         
         if (!command.compare("F"))
-            cout << "I found an F" << endl;
+            cmdF(destination, line);
         
         if (!command.compare("D"))
-            cout << "I found an D" << endl;
+            cmdD(destination, line);
         
         if (!command.compare("E"))
-            cout << "I found an E" << endl;
+            cmdE(destination, line);
         
         if (!command.compare("C"))
-            cout << "I found an C" << endl;
+            cmdC(destination, line);
         
         if (!command.compare("M"))
-            cout << "I found an M" << endl;
+            cmdM(destination, line);
     } // for all the lines in the command file
     
     return destination;
