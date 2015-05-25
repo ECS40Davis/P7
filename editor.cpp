@@ -8,30 +8,6 @@
 using namespace std;
 
 
-string getCommand(const string &line)
-{
-    return line;
-}
-
-
-vector<string> editFile(const vector<string> &src, const vector<string> &cmd)
-{
-    vector<string> destination;
-    string line, command;
-    vector<string>::const_iterator rows;
-    
-    for (rows = cmd.begin(); rows != cmd.end(); rows++)
-    {
-        //command = getCommand(*rows);
-        line = *rows;
-        command = *line.begin();
-        cout << "Command = " << command << endl;
-    } // for all the lines in the command file
-    
-    return destination;
-} // editFile
-
-
 // Prints the contents of the vector
 void printVector(vector<string> &vect)
 {
@@ -43,6 +19,50 @@ void printVector(vector<string> &vect)
     } // going through the vector
     
 } // printVector
+
+
+void cmdI(vector<string> &vector, const string line)
+{
+    printVector(vector);
+    cout << line << endl;
+} // cmdI
+
+
+vector<string> editFile(const vector<string> &src, const vector<string> &cmd)
+{
+    vector<string> destination = src;
+    string line, command;
+    vector<string>::const_iterator rows;
+    
+    for (rows = cmd.begin(); rows != cmd.end(); rows++) // gets commands
+    {
+        line = *rows;
+        command = *line.begin();
+        
+        if (!command.compare("I"))
+            cmdI(destination, line);
+        
+        if (!command.compare("R"))
+            cout << "I found an R" << endl;
+        
+        if (!command.compare("F"))
+            cout << "I found an F" << endl;
+        
+        if (!command.compare("D"))
+            cout << "I found an D" << endl;
+        
+        if (!command.compare("E"))
+            cout << "I found an E" << endl;
+        
+        if (!command.compare("C"))
+            cout << "I found an C" << endl;
+        
+        if (!command.compare("M"))
+            cout << "I found an M" << endl;
+    } // for all the lines in the command file
+    
+    return destination;
+} // editFile
 
 
 // Stores contents of a file into a vector
