@@ -8,9 +8,26 @@
 using namespace std;
 
 
+string getCommand(const string &line)
+{
+    return line;
+}
+
+
 vector<string> editFile(const vector<string> &src, const vector<string> &cmd)
 {
     vector<string> destination;
+    string line, command;
+    vector<string>::const_iterator rows;
+    
+    for (rows = cmd.begin(); rows != cmd.end(); rows++)
+    {
+        //command = getCommand(*rows);
+        line = *rows;
+        command = *line.begin();
+        cout << "Command = " << command << endl;
+    } // for all the lines in the command file
+    
     return destination;
 } // editFile
 
@@ -59,10 +76,10 @@ int main (int argc, char** argv)
     sourcef.close();
     commandf.close();
     
-    printVector(source);
-    printVector(command);
+//    printVector(source);
+//    printVector(command);
     
     destination = editFile(source, command);
 
     return 0;
-} // maine
+} // main
