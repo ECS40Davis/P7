@@ -1,6 +1,7 @@
 // Author: Jessica Ma
 
 #include <iostream>
+#include <cstdio>
 #include <fstream>
 #include <vector>
 #include <string> 
@@ -20,35 +21,38 @@ void printVector(vector<string> &vect)
     
 } // printVector
 
-
+// insert
 void cmdI(vector<string> &vector, const string line)
 {
+    int lineNum, positionNum;
+    string command, ins;
     printVector(vector);
-    cout << line << endl;
+    sscanf(line, "%s %d %d %[^\n]%s", command, lineNum, positionNum, ins);
+    
 } // cmdI
 
-
+// replace
 void cmdR(vector<string> &vector, const string line)
 {
     printVector(vector);
     cout << line << endl;
 } // cmdR
 
-
+// find
 void cmdF(vector<string> &vector, const string line)
 {
     printVector(vector);
     cout << line << endl;
 } // cmdF
 
-
+// vector: erase
 void cmdD(vector<string> &vector, const string line)
 {
     printVector(vector);
     cout << line << endl;
 } // cmdD
 
-
+// erase
 void cmdE(vector<string> &vector, const string line)
 {
     printVector(vector);
