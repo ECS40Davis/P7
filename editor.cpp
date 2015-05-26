@@ -51,6 +51,36 @@ void cmdI(vector<string> &vect, const string line)
 // replace
 void cmdR(vector<string> &vect, const string line)
 {
+    
+    int lNum, startpNum, endpNum;
+    string command,lineNum, startPositionNum, endPositionNum, ins;
+    istringstream l(line);
+    stringstream convert;
+    vector<string>::const_iterator row;
+    
+    getline(l, command, ' ');
+    getline(l, lineNum, ' ');
+    getline(l, startPositionNum, ' ');
+    getline(l, endPositionNum, ' ');
+    getline(l, ins, '\n');
+    
+    convert << lineNum;
+    convert >> lNum;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << startPositionNum;
+    convert >> startpNum;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << endPositionNum;
+    convert >> endpNum;
+    
+    (*(vect.begin() + lNum)).replace(startpNum, endpNum - startpNum, ins);
+
 //    printVector(vector);
 //    cout << line << endl;
 } // cmdR
