@@ -122,6 +122,37 @@ void cmdE(vector<string> &vect, const string line)
 
 void cmdC(vector<string> &vect, const string line)
 {
+    int lNumS, lNumE, desNum;
+    string command,lineNumStart, lineNumEnd, lineDestination;
+    istringstream l(line);
+    stringstream convert;
+    vector<string>::const_iterator row;
+    
+    getline(l, command, ' ');
+    getline(l, lineNumStart, ' ');
+    getline(l, lineNumEnd, ' ');
+    getline(l, lineDestination, '\n');
+    
+    convert << lineNumStart;
+    convert >> lNumS;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << lineNumEnd;
+    convert >> lNumE;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << lineDestination;
+    convert >> desNum;
+    
+    
+   //NOT DONE. NEED TO SOMEHOW PULL A LINE RATHER THAN CHARACTER POSITION
+    
+   // (*(vect.begin() + lNum)).substr(startpNum, endpNum - startpNum);
+
 //    printVector(vector);
 //    cout << line << endl;
 } // cmdC
