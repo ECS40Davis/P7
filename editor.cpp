@@ -51,7 +51,6 @@ void cmdI(vector<string> &vect, const string line)
 // replace
 void cmdR(vector<string> &vect, const string line)
 {
-    
     int lNum, startpNum, endpNum;
     string command,lineNum, startPositionNum, endPositionNum, ins;
     istringstream l(line);
@@ -80,16 +79,30 @@ void cmdR(vector<string> &vect, const string line)
     convert >> endpNum;
     
     (*(vect.begin() + lNum)).replace(startpNum, endpNum - startpNum, ins);
-
-//    printVector(vector);
-//    cout << line << endl;
 } // cmdR
 
 // find
 void cmdF(vector<string> &vect, const string line)
 {
-//    printVector(vector);
-//    cout << line << endl;
+    int count = 0;
+    string command, fin;
+    istringstream l(line);
+    vector<string>::const_iterator rows;
+    
+    getline(l, command, ' ');
+    getline(l, fin, '\n');
+    
+    cout << fin << " ";
+    
+    for (rows = vect.begin(); rows != vect.end(); rows++)
+    {
+        int position = (*rows).find(fin);
+        if (position != -1)
+            cout << count << " ";
+        count++;
+    } // for all the rows
+    
+    cout << endl;
 } // cmdF
 
 // vector: erase
