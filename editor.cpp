@@ -1,5 +1,6 @@
 // Author: Jessica Ma
 
+#include <sstream>
 #include <iostream>
 #include <cstdio>
 #include <fstream>
@@ -22,55 +23,71 @@ void printVector(vector<string> &vect)
 } // printVector
 
 // insert
-void cmdI(vector<string> &vector, const string line)
+void cmdI(vector<string> &vect, const string line)
 {
-    int lineNum, positionNum;
-    string command, ins;
-    printVector(vector);
-    sscanf(line, "%s %d %d %[^\n]%s", command, lineNum, positionNum, ins);
+    int lNum, pNum;
+    string command,lineNum, positionNum, ins;
+    istringstream l(line);
+    stringstream convert;
+    vector<string>::const_iterator row;
     
+    getline(l, command, ' ');
+    getline(l, lineNum, ' ');
+    getline(l, positionNum, ' ');
+    getline(l, ins, '\n');
+    
+    convert << lineNum;
+    convert >> lNum;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << positionNum;
+    convert >> pNum;
+    
+    (*(vect.begin() + lNum)).insert(pNum, ins);    
 } // cmdI
 
 // replace
-void cmdR(vector<string> &vector, const string line)
+void cmdR(vector<string> &vect, const string line)
 {
-    printVector(vector);
-    cout << line << endl;
+//    printVector(vector);
+//    cout << line << endl;
 } // cmdR
 
 // find
-void cmdF(vector<string> &vector, const string line)
+void cmdF(vector<string> &vect, const string line)
 {
-    printVector(vector);
-    cout << line << endl;
+//    printVector(vector);
+//    cout << line << endl;
 } // cmdF
 
 // vector: erase
-void cmdD(vector<string> &vector, const string line)
+void cmdD(vector<string> &vect, const string line)
 {
-    printVector(vector);
-    cout << line << endl;
+//    printVector(vector);
+//    cout << line << endl;
 } // cmdD
 
 // erase
-void cmdE(vector<string> &vector, const string line)
+void cmdE(vector<string> &vect, const string line)
 {
-    printVector(vector);
-    cout << line << endl;
+//    printVector(vector);
+//    cout << line << endl;
 } // cmdE
 
 
-void cmdC(vector<string> &vector, const string line)
+void cmdC(vector<string> &vect, const string line)
 {
-    printVector(vector);
-    cout << line << endl;
+//    printVector(vector);
+//    cout << line << endl;
 } // cmdC
 
 
-void cmdM(vector<string> &vector, const string line)
+void cmdM(vector<string> &vect, const string line)
 {
-    printVector(vector);
-    cout << line << endl;
+//    printVector(vector);
+//    cout << line << endl;
 } // cmdM
 
 
@@ -128,7 +145,6 @@ int main (int argc, char** argv)
     vector<string> destination;
     ifstream sourcef(argv[1]);
     ifstream commandf(argv[2]);
-    
     // Check for right number of arguments
     if (argc != 4)
     {
@@ -138,13 +154,8 @@ int main (int argc, char** argv)
     
     readFile(source, sourcef);
     readFile(command, commandf);
-    
     sourcef.close();
     commandf.close();
-    
-//    printVector(source);
-//    printVector(command);
-    
     destination = editFile(source, command);
 
     return 0;
