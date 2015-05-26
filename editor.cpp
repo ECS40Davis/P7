@@ -165,6 +165,56 @@ void cmdE(vector<string> &vect, const string line)
 
 void cmdC(vector<string> &vect, const string line)
 {
+    int lNumS, lNumE, desNum;
+    string command,copyStart, copyEnd, paste;
+    istringstream l(line);
+    stringstream convert;
+    vector<string>::const_iterator row;
+    
+    getline(l, command, ' ');
+    getline(l, copyStart, ' ');
+    getline(l, copyEnd, ' ');
+    getline(l, paste, '\n');
+    
+    convert << copyStart;
+    convert >> lNumS;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << copyEnd;
+    convert >> lNumE;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << paste;
+    convert >> desNum;
+    
+    
+    /*
+     
+     string copied;
+     
+     
+     for (rows = vect.begin(); rows != vect.end(); rows++)
+     {
+        while (copyStart <= rows || rows <=copyEnd)
+        {
+            getline(l, copied, '\n');
+     
+            copied = l.substr(0, '\n');
+        
+        }
+     
+     }
+     
+     
+     
+     
+     
+     */
+
 //    printVector(vector);
 //    cout << line << endl;
 } // cmdC
