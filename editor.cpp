@@ -1,4 +1,4 @@
-// Author: Jessica Ma
+// Author: Jessica Ma + Nathaniel Clay
 
 #include <sstream>
 #include <iostream>
