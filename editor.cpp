@@ -45,7 +45,8 @@ void cmdI(vector<string> &vect, const string line)
     convert << positionNum;
     convert >> pNum;
     
-    (*(vect.begin() + lNum)).insert(pNum, ins);    
+    (*(vect.begin() + lNum)).insert(pNum, ins);   
+    printVector(vect);
 } // cmdI
 
 // replace
@@ -79,6 +80,7 @@ void cmdR(vector<string> &vect, const string line)
     convert >> endpNum;
     
     (*(vect.begin() + lNum)).replace(startpNum, endpNum - startpNum, ins);
+    printVector(vect);
 } // cmdR
 
 // find
@@ -108,51 +110,61 @@ void cmdF(vector<string> &vect, const string line)
 // vector: erase
 void cmdD(vector<string> &vect, const string line)
 {
-//    printVector(vector);
-//    cout << line << endl;
+    int sLine, eLine;
+    string command, startLine, endLine;
+    istringstream l(line);
+    stringstream convert;
+    
+    getline(l, command, ' ');
+    getline(l, startLine, ' ');
+    getline(l, endLine, ' ');
+    
+    convert << startLine;
+    convert >> sLine;
+    
+    convert.str(""); // clear the stringstream
+    convert.clear(); // clear the state flags for another conversion
+    
+    convert << endLine;
+    convert >> eLine;
+    
+    vect.erase(vect.begin() + sLine, vect.begin() + eLine + 1);
+    printVector(vect);
 } // cmdD
 
 // erase
 void cmdE(vector<string> &vect, const string line)
 {
-//    printVector(vector);
-//    cout << line << endl;
+    int startPosition, count = 0;
+    string command, eras;
+    istringstream l(line);
+    vector<string>::iterator rows;
+    
+    getline(l, command, ' ');
+    getline(l, eras, '\n');
+    
+   for (rows = vect.begin(); rows != vect.end(); rows++)
+   {
+       startPosition = (*rows).find(eras);
+       
+       if (startPosition != -1)
+       {
+           
+           if (eras.size() == (unsigned int)((*rows).size()))
+               vect.erase(vect.begin() + count);
+           else // not whole line
+               (*rows).erase(startPosition, eras.size());
+           printVector(vect);
+       } // if found
+       
+       count++;
+   } // for all the rows in the vector/file
+    
 } // cmdE
 
 
 void cmdC(vector<string> &vect, const string line)
 {
-    int lNumS, lNumE, desNum;
-    string command,lineNumStart, lineNumEnd, lineDestination;
-    istringstream l(line);
-    stringstream convert;
-    vector<string>::const_iterator row;
-    
-    getline(l, command, ' ');
-    getline(l, lineNumStart, ' ');
-    getline(l, lineNumEnd, ' ');
-    getline(l, lineDestination, '\n');
-    
-    convert << lineNumStart;
-    convert >> lNumS;
-    
-    convert.str(""); // clear the stringstream
-    convert.clear(); // clear the state flags for another conversion
-    
-    convert << lineNumEnd;
-    convert >> lNumE;
-    
-    convert.str(""); // clear the stringstream
-    convert.clear(); // clear the state flags for another conversion
-    
-    convert << lineDestination;
-    convert >> desNum;
-    
-    
-   //NOT DONE. NEED TO SOMEHOW PULL A LINE RATHER THAN CHARACTER POSITION
-    
-   // (*(vect.begin() + lNum)).substr(startpNum, endpNum - startpNum);
-
 //    printVector(vector);
 //    cout << line << endl;
 } // cmdC
