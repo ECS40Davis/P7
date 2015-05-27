@@ -191,30 +191,13 @@ void cmdC(vector<string> &vect, const string line)
     convert << paste;
     convert >> desNum;
     
+    vector<string> copiedStrings;
     
-    /*
-     
-     string copied;
-     
-     
-     for (rows = vect.begin(); rows != vect.end(); rows++)
-     {
-        while (copyStart <= rows || rows <=copyEnd)
-        {
-            getline(l, copied, '\n');
-     
-            copied = l.substr(0, '\n');
-        
-        }
-     
-     }
-     
-     
-     
-     
-     
-     */
-
+    // move the copied strings to a temporary vector
+    copiedStrings.assign(vect.begin() + lNumS, vect.begin() + lNumE);
+    
+    // then, insert them into the original array
+    vect.insert(vect.begin() + desNum, copiedStrings.begin(), copiedStrings.end());
 //    printVector(vector);
 //    cout << line << endl;
 } // cmdC
